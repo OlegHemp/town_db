@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ super() }}
+      <div class="row">
+        <div class="col-12 text-center">
+             <h2>Список городов</h2>
+        </div>
+      </div>
+<div class="row">
+    <div class="col-3 ">
+    <ul>
+        <li class="line1">Страна  |    Город</li>
+        <hr>
+        {% for m in tab_all[0:col] %}
+            <li><b>{{m.Country.name }} </b>  :   {{m.City.town }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+
+    <div class="col-3 ">
+    <ul>
+        <li class="line1">Страна  |    Город</li>
+        <hr>
+        {% for m in tab_all[col:2*col] %}
+            <li><b>{{m.Country.name }}</b>  :   {{m.City.town }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+        <div class="col-3 ">
+    <ul>
+        <li class="line1">Страна  |    Город</li>
+        <hr>
+        {% for m in tab_all[2*col:3*col] %}
+            <li><b>{{m.Country.name }}</b>  :   {{m.City.town }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+        <div class="col-3 ">
+    <ul>
+        <li class="line1">Страна  |    Город</li>
+        <hr>
+        {% for m in tab_all[3*col:] %}
+            <li><b>{{m.Country.name }}</b>  :   {{m.City.town }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+</div> <!-- row-->
+{% endblock %}

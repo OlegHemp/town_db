@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ super() }}
+    <div class="row">
+        <div class="col-12 text-center">
+             <h2>Поиск</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 text-left">
+    <h4>Заполните поле</h4>
+        <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=40) }}
+            <br>
+            {% for error in form.name.errors %}
+                 <span style="color: red; font-size: 14px">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+        </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+
+    <ul>
+
+        {% for m in q %}
+            <li>{{m.town}} -  {{m.popul}}</li>
+        {% endfor %}
+
+    </ul>
+        </div><!--col-6-->
+        <div class="col-3 text-left">
+            <h6>Население до 1 млн.</h6>
+            <hr>
+                    {% for m in q_1_mill %}
+            <li>{{m.town}} -  {{m.popul}}</li>
+        {% endfor %}
+
+        </div>
+    </div> <!--row-->
+{% endblock %}

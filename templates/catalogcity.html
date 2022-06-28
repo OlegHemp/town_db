@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 text-center">
+             <h2>Справочник городов</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 ">
+    <h4>Заполните поля</h4>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=40) }}
+            <br>
+            {% for error in form.name.errors %}
+                 <span style="color: red; font-size: 14px">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.popul.label }}<br>
+            {{ form.popul(size=20) }}
+            <br>
+            {% for error in form.popul.errors %}
+                 <span style="color: red; font-size: 14px">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+                <p>
+            {{ form.cntry.label }}<br>
+            {{ form.cntry(size=20) }}
+            <br>
+            {% for error in form.cntry.errors %}
+                 <span style="color: red; font-size: 14px">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+        </div>
+    <div class="col-2 ">
+        <ul>
+            <li class="line1">Город  |    Население, тыс.</li>
+        <hr>
+        {% for m in city_all[0:col] %}
+            <li>{{m.town}} -  {{m.popul}}</li>
+        {% endfor %}
+    </ul>
+    </div>
+     <div class="col-2 ">
+        <ul>
+            <li class="line1">Город  |    Население, тыс.</li>
+        <hr>
+        {% for m in city_all[col:2 * col] %}
+            <li>{{m.town}} -  {{m.popul}}</li>
+        {% endfor %}
+    </ul>
+    </div>
+     <div class="col-2 ">
+        <ul>
+            <li class="line1">Город  |    Население, тыс.</li>
+        <hr>
+        {% for m in city_all[2 * col: 3 * col] %}
+            <li>{{m.town}} -  {{m.popul}}</li>
+        {% endfor %}
+    </ul>
+    </div>
+         <div class="col-2 ">
+        <ul>
+            <li class="line1">Город  |    Население, тыс.</li>
+        <hr>
+        {% for m in city_all[3 * col: ] %}
+            <li>{{m.town}} -  {{m.popul}}</li>
+        {% endfor %}
+    </ul>
+    </div>
+    </div> <!-- row-->
+{% endblock %}

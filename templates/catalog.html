@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 text-center">
+             <h2>Справочник стран</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 text-left">
+    <h4>Заполните поле</h4>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=40) }}
+            <br>
+            {% for error in form.name.errors %}
+                 <span style="color: red; font-size: 14px">[{{ error }}]</span><br>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+
+        </div><!--col-6-->
+         <div class="col-2 text-left">
+             <ul>
+                {% for m in country_all[0:col] %}
+                    <li>{{m.name }}</li>
+                {% endfor %}
+             </ul>
+        </div>
+                 <div class="col-2 text-left">
+             <ul>
+                {% for m in country_all[col:2 * col] %}
+                    <li>{{m.name }}</li>
+                {% endfor %}
+             </ul>
+        </div>
+                 <div class="col-2 text-left">
+             <ul>
+                {% for m in country_all[2 * col:] %}
+                    <li>{{m.name }}</li>
+                {% endfor %}
+             </ul>
+        </div>
+    </div> <!--row-->
+{% endblock %}
